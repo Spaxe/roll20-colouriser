@@ -3,7 +3,7 @@
 
   "name": "Roll20 Colourise",
   "description": "This extension colours the text chat in Roll20.",
-  "version": "1.0",
+  "version": "1.1",
 
   "icons": { "16": "icon16.png",
              "48": "icon48.png",
@@ -11,13 +11,12 @@
 
   "content_scripts": [
     {
-      "matches": ["*://app.roll20.net/"],
+      "matches": ["*://*.roll20.net/*"],
       "js": ["jquery-2.1.3.min.js", "roll20-colourise.js"],
       "run_at": "document_end"
     }
   ],
-
   "permissions": [
-    "*://app.roll20.net/"
+    "*://*.roll20.net/*"
   ]
 }
