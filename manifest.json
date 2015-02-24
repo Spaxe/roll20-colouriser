@@ -5,6 +5,10 @@
   "description": "This extension colours the text chat in Roll20.",
   "version": "1.0",
 
+  "icons": { "16": "icon16.png",
+             "48": "icon48.png",
+             "128": "icon128.png" },
+
   "content_scripts": [
     {
       "matches": ["*://app.roll20.net/"],
@@ -12,6 +16,7 @@
       "run_at": "document_end"
     }
   ],
+
   "permissions": [
     "*://app.roll20.net/"
   ]
