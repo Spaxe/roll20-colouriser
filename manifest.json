@@ -3,7 +3,7 @@
 
   "name": "Roll20 Colourise",
   "description": "This extension colours the text chat in Roll20.",
-  "version": "0.1",
+  "version": "1.0",
 
   "content_scripts": [
     {
