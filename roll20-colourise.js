@@ -83,14 +83,21 @@ function rgbToHex(r, g, b) {
     return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 }
 
-$('#textchat .message.general:not(.you)').initialize(function() {
-  var self = $(this);
-  var name = self.find('.by').text();
-  if (name) {
-    var c = hsvToRgb(Math.abs(hashCode(name)) % 360, 7, 93);
-    var hex = rgbToHex(c[0], c[1], c[2]);
-  } else {
-    var hex = self.prev().css('background-color');
-  }
-  self.css('background-color', hex);
-});
+function roll20_colourise() {
+  $('#textchat .content .message.general:not(.you, .roll20-colourised)').each(function (i, node) {
+    var self = $(node);
+    var name = self.find('.by').text();
+    if (name) {
+      var c = hsvToRgb(Math.abs(hashCode(name)) % 360, 7, 93);
+      var hex = rgbToHex(c[0], c[1], c[2]);
+    } else {
+      var hex = self.prev().css('background-color');
+    }
+    self.css('background-color', hex);
+    self.addClass('roll20-colourised');
+  });
+
+  window.setTimeout(roll20_colourise, 100);
+}
+
+roll20_colourise();

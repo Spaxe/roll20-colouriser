@@ -8,7 +8,7 @@
   "content_scripts": [
     {
       "matches": ["*://app.roll20.net/"],
-      "js": ["jquery-2.1.3.min.js", "jquery.initialize.js", "roll20-colourise.js"],
+      "js": ["jquery-2.1.3.min.js", "roll20-colourise.js"],
       "run_at": "document_end"
     }
   ],
