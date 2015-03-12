@@ -2,9 +2,9 @@ var actualCode = '(' + function() {
   function hashCode(str) {
       var hash = 0;
       if (str.length == 0) return hash;
-      for (i = 0; i < str.length; i++) {
-          char = str.charCodeAt(i);
-          hash = ((hash<<7)-hash)+char;
+      for (var i = 0; i < str.length; i++) {
+          var c = str.charCodeAt(i);
+          hash = ((hash<<7)-hash)+c*7;
           hash = hash & hash; // Convert to 32bit integer
       }
       return hash;
@@ -89,7 +89,10 @@ var actualCode = '(' + function() {
       var self = $(node);
       var name = self.find('.by').text();
       if (name) {
-        var c = hsvToRgb(Math.abs(hashCode(name)) % 360, 7, 93);
+        var hash = Math.abs(hashCode(name));
+        var saturation_variance = hash % 3;
+        var brightness_variance = hash % 3;
+        var c = hsvToRgb(hash % 120 * 3, 5 + saturation_variance, 95 - brightness_variance);
         var hex = rgbToHex(c[0], c[1], c[2]);
       } else {
         var hex = self.prev().css('background-color');
